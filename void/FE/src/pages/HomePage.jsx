@@ -18,7 +18,7 @@ const HomePage = () => {
 					bgClip={"text"}
 					textAlign={"center"}
 				>
-					Current Products 🚀
+					Featured Businessess 🚀
 				</Text>
 
         <SimpleGrid 
