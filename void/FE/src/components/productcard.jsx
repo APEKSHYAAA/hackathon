@@ -14,11 +14,11 @@ import {
 import { useState } from 'react';
 
 const ProductCard = ({ product }) => {
-const [updatedProduct, setUpdatedProduct]= useState(product);
+  const [updatedProduct, setUpdatedProduct] = useState(product);
 
   const textColor = useColorModeValue("gray.600", "gray.200");
   const bg = useColorModeValue("white", "gray.700");
-  const { deleteProduct , updateProduct} = useProductStore();
+  const { deleteProduct, updateProduct } = useProductStore();
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -43,8 +43,8 @@ const [updatedProduct, setUpdatedProduct]= useState(product);
     }
   };
 
-   const handleUpdateProduct = async (pid, updatedProduct) => {
-    const { success, message } =await updateProduct(pid, updatedProduct);
+  const handleUpdateProduct = async (pid, updatedProduct) => {
+    const { success, message } = await updateProduct(pid, updatedProduct);
     if (!success) {
       toast({
         title: 'Error',
@@ -63,7 +63,7 @@ const [updatedProduct, setUpdatedProduct]= useState(product);
       });
     }
     onClose();
-   }
+  }
 
   return (
     <Box
@@ -79,8 +79,17 @@ const [updatedProduct, setUpdatedProduct]= useState(product);
         <Heading as='h3' size='md' mb={2}>
           {product.name}
         </Heading>
-        <Text fontWeight='bold' fontSize='xl' color={textColor} mb={4}>
-          Nrs. {product.price}
+        <Text fontSize='l' color={textColor} mb={4}>
+          Fund Needed: Nrs. {product.fund_needed} 
+        </Text>
+        <Text fontSize='l' color={textColor} mb={4}>
+          Fund Raised: Nrs. {product.fund_raise}
+        </Text>
+        <Text color={textColor} mb={4}>
+          Description: {product.description}
+        </Text>
+        <Text color={textColor} mb={4}>
+          Perks: {product.perks.join(', ')}
         </Text>
         <HStack spacing={2}>
           <IconButton icon={<EditIcon />} colorScheme='blue' onClick={onOpen} />
@@ -100,33 +109,52 @@ const [updatedProduct, setUpdatedProduct]= useState(product);
           <ModalCloseButton />
           <ModalBody>
             <VStack spacing={4}>
-            <Input 
-            placeholder = 'Product Name'
-            name='name'
-            value={updatedProduct.name}
-            onChange = {(e)=> setUpdatedProduct({...updatedProduct,name:e.target.value})}
-            />
-            <Input 
-            placeholder = 'Price'
-            name='price'
-            type='number'
-            value={updatedProduct.price}
-            onChange = {(e)=> setUpdatedProduct({...updatedProduct,price:e.target.value})}
-            />
-            <Input 
-            placeholder = 'Image URL'
-            name='image'
-            value={updatedProduct.image}
-            onChange = {(e)=> setUpdatedProduct({...updatedProduct,image:e.target.value})}
-            />
+              <Input
+                placeholder='Product Name'
+                name='name'
+                value={updatedProduct.name}
+                onChange={(e) => setUpdatedProduct({ ...updatedProduct, name: e.target.value })}
+              />
+              <Input
+                placeholder='Fund Needed'
+                name='fund_needed'
+                type='number'
+                value={updatedProduct.fund_needed}
+                onChange={(e) => setUpdatedProduct({ ...updatedProduct, fund_needed: e.target.value })}
+              />
+              <Input
+                placeholder='Fund Raised'
+                name='fund_raise'
+                type='number'
+                value={updatedProduct.fund_raise}
+                onChange={(e) => setUpdatedProduct({ ...updatedProduct, fund_raise: e.target.value })}
+              />
+              <Input
+                placeholder='Image URL'
+                name='image'
+                value={updatedProduct.image}
+                onChange={(e) => setUpdatedProduct({ ...updatedProduct, image: e.target.value })}
+              />
+              <Input
+                placeholder='Description'
+                name='description'
+                value={updatedProduct.description}
+                onChange={(e) => setUpdatedProduct({ ...updatedProduct, description: e.target.value })}
+              />
+              <Input
+                placeholder='Perks (comma separated)'
+                name='perks'
+                value={updatedProduct.perks.join(', ')}
+                onChange={(e) => setUpdatedProduct({ ...updatedProduct, perks: e.target.value.split(', ') })}
+              />
             </VStack>
           </ModalBody>
 
           <ModalFooter>
-          <Button  colorScheme='blue' onClick={() => handleUpdateProduct(product._id,updatedProduct )}>Update</Button>
-          <Button variant='ghost'  mr={3} onClick={onClose}>
-              Cancel</Button>
-           
+            <Button colorScheme='blue' onClick={() => handleUpdateProduct(product._id, updatedProduct)}>Update</Button>
+            <Button variant='ghost' mr={3} onClick={onClose}>
+              Cancel
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

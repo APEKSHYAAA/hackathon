@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   Container,
   VStack,
@@ -10,68 +10,122 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { useProductStore } from '../store/product';
+
 const CreatePage = () => {
-  const [newProduct, setnewProduct] = useState({
+  const [newProduct, setNewProduct] = useState({
     name: "",
-    price: "",
-    image: ""
+    fund_needed: "",
+    fund_raise: "",
+    image: "",
+    description: "",
+    perks: [],
   });
 
   const toast = useToast();
-  const {createProduct} = useProductStore();
-  const handleAddProduct = async() => {
-    const {success,message} = await createProduct(newProduct);
-    if (!success){
+  const { createProduct } = useProductStore();
+
+  const handleAddProduct = async () => {
+    const { success, message } = await createProduct(newProduct);
+    if (!success) {
       toast({
         title: "Error",
         description: message,
         status: "error",
-        isClosable: true
-      })} else {
-        toast({
-          title: "Success",
+        isClosable: true,
+      });
+    } else {
+      toast({
+        title: "Success",
         description: message,
         status: "success",
-        isClosable: true
-        })
-      }
-      setnewProduct({name:"", price: "",image: ""})
-  }
+        isClosable: true,
+      });
+    }
+    setNewProduct({
+      name: "",
+      fund_needed: "",
+      fund_raise: "",
+      image: "",
+      description: "",
+      perks: [],
+    });
+  };
 
   return (
     <Container maxW={"container.sm"}>
       <VStack spacing={8}>
-        <Heading as ={"h1"} size= {"2x1"} textAlign={"center"}>
+        <Heading as={"h1"} size={"2xl"} textAlign={"center"}>
           Create New Product
         </Heading>
-        <Box w={"full"} bg={useColorModeValue("white","gray.800")}
-        p={6} rounded={"lg"} shadow={"md"}>
+        <Box
+          w={"full"}
+          bg={useColorModeValue("white", "gray.800")}
+          p={6}
+          rounded={"lg"}
+          shadow={"md"}
+        >
           <VStack spacing={4}>
-            <Input 
-            placeholder = 'Product Name'
-            name='name'
-            value={newProduct.name}
-            onChange = {(e)=> setnewProduct({...newProduct,name:e.target.value})}
+            <Input
+              placeholder="Product Name"
+              name="name"
+              value={newProduct.name}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, name: e.target.value })
+              }
             />
-            <Input 
-            placeholder = 'Price'
-            name='price'
-            type='number'
-            value={newProduct.price}
-            onChange = {(e)=> setnewProduct({...newProduct,price:e.target.value})}
+            <Input
+              placeholder="Fund Needed"
+              name="fund_needed"
+              type="number"
+              value={newProduct.fund_needed}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, fund_needed: e.target.value })
+              }
             />
-            <Input 
-            placeholder = 'Image URL'
-            name='image'
-            value={newProduct.image}
-            onChange = {(e)=> setnewProduct({...newProduct,image:e.target.value})}
+            <Input
+              placeholder="Fund Raised"
+              name="fund_raise"
+              type="number"
+              value={newProduct.fund_raise}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, fund_raise: e.target.value })
+              }
             />
-            <Button colorScheme='blue' onClick={handleAddProduct} w='full'>Add Product</Button>
+            <Input
+              placeholder="Image URL"
+              name="image"
+              value={newProduct.image}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, image: e.target.value })
+              }
+            />
+            <Input
+              placeholder="Description"
+              name="description"
+              value={newProduct.description}
+              onChange={(e) =>
+                setNewProduct({ ...newProduct, description: e.target.value })
+              }
+            />
+            <Input
+              placeholder="Perks (comma separated)"
+              name="perks"
+              value={newProduct.perks.join(", ")}
+              onChange={(e) =>
+                setNewProduct({
+                  ...newProduct,
+                  perks: e.target.value.split(", ").map((perk) => perk.trim()),
+                })
+              }
+            />
+            <Button colorScheme="blue" onClick={handleAddProduct} w="full">
+              Add Product
+            </Button>
           </VStack>
         </Box>
       </VStack>
     </Container>
-  )
-}
+  );
+};
 
-export default CreatePage
+export default CreatePage;

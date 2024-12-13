@@ -1,23 +1,34 @@
-import mongoose, { trusted } from "mongoose";
+import mongoose from "mongoose";
 
 const productSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
     },
-    price: {
+    fund_needed: {
         type: Number,
         required: true
     },
-     image: {
+    fund_raise: {
+        type: Number,
+        required: true
+    },
+    perks: {
+        type: [String],  // Assuming perks are stored as an array of strings
+        required: true
+    },
+    description: {
         type: String,
         required: true
-     },
-
+    },
+    image: {
+        type: String,
+        required: true
+    }
 },
-{
-    timestamps: true
-});
+    {
+        timestamps: true
+    });
 
 const Product = mongoose.model("Product", productSchema);
 
