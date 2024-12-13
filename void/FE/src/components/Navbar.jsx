@@ -10,7 +10,7 @@ const Navbar = () => {
     <Container maxW={"1140px"} px={4} >
       <Flex
         h={16}
-        alignItems={"center"}
+        alignItems={"left"}
         justifyContent={"space-between"}
         flexDir={{
           base: "column",
@@ -21,7 +21,7 @@ const Navbar = () => {
           fontSize={{ base: "22", sm: "28" }}
           fontWeight={"bold"}
           textTransform={"uppercase"}
-          textAlign={"center"}
+          textAlign={"left"}
           bgGradient={"linear(to-r, cyan.400, blue.500)"}
           bgClip={"text"}
         >
@@ -29,12 +29,6 @@ const Navbar = () => {
         </Text>
         
         <HStack spacing={2} alignItems={"center"}>
-          <Link to={"/create"}>
-            <Button>
-              <PlusSquareIcon fontSize={20} />
-            </Button>
-          </Link>
-
           <Button onClick={toggleColorMode}>
             {colorMode === "light" ? <MoonIcon /> : <SunIcon size="20" />}
           </Button>

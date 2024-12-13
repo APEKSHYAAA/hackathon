@@ -16,15 +16,20 @@ const HomePage = () => {
   return (
     <Container maxW="container.xl" py={12}>
       <VStack spacing={8}>
-        <Text
-          fontSize={"30"}
-          fontWeight={"bold"}
+
+          <Link to="/login">
+          <Text
+            as="button"
+            fontSize={"20"}
           bgGradient={"linear(to-r, cyan.400, blue.500)"}
           bgClip={"text"}
           textAlign={"center"}
-        >
-          Featured Businesses 🚀
-        </Text>
+            color="blue.500"
+            _hover={{ textDecoration: "underline" }}
+          >
+           New here? Login
+          </Text>
+          </Link>
 
         <SimpleGrid 
           columns={{

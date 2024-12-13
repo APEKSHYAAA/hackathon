@@ -37,10 +37,10 @@ function RegisterPage({ onSubmit, error }) {
   };
 
   return (
-    <Box maxW="md" mx="auto" mt={12} p={8} bg="gray.800" borderRadius="lg" boxShadow="lg">
+    <Box maxW="md" mx="auto" mt={12} p={8} bg="grey.100" borderRadius="lg" boxShadow="lg">
       <form onSubmit={handleSubmit}>
         <FormControl isInvalid={isError} mb={4}>
-          <FormLabel htmlFor="fullName" color="white">Full Name</FormLabel>
+          <FormLabel htmlFor="fullName" color="black">Full Name</FormLabel>
           <Input
             id="fullName"
             name="fullName"
@@ -48,13 +48,13 @@ function RegisterPage({ onSubmit, error }) {
             onChange={handleInputChange}
             placeholder="Enter your full name"
             _placeholder={{ color: 'gray.400' }} // Lighter color for placeholder
-            bg="gray.700" // Input background color
-            color="white" // Text color
+            bg="white" // Input background color
+            color="black" // Text color
           />
         </FormControl>
 
         <FormControl isInvalid={isError} mb={4}>
-          <FormLabel htmlFor="email" color="white">Email</FormLabel>
+          <FormLabel htmlFor="email" color="black">Email</FormLabel>
           <Input
             id="email"
             name="email"
@@ -63,13 +63,13 @@ function RegisterPage({ onSubmit, error }) {
             onChange={handleInputChange}
             placeholder="Enter your email"
             _placeholder={{ color: 'gray.400' }} // Lighter color for placeholder
-            bg="gray.700" // Input background color
-            color="white" // Text color
+            bg="white" // Input background color
+            color="black" // Text color
           />
         </FormControl>
 
         <FormControl isInvalid={isError} mb={4}>
-          <FormLabel htmlFor="password" color="white">Password</FormLabel>
+          <FormLabel htmlFor="password" color="black">Password</FormLabel>
           <Input
             id="password"
             name="password"
@@ -78,24 +78,24 @@ function RegisterPage({ onSubmit, error }) {
             onChange={handleInputChange}
             placeholder="Enter your password"
             _placeholder={{ color: 'gray.400' }} // Lighter color for placeholder
-            bg="gray.700" // Input background color
-            color="white" // Text color
+            bg="white" // Input background color
+            color="black" // Text color
           />
         </FormControl>
 
         <FormControl isInvalid={isError} mb={6}>
-          <FormLabel htmlFor="userType" color="white">User Type</FormLabel>
+          <FormLabel htmlFor="userType" color="black">User Type</FormLabel>
           <Select
             id="userType"
             name="userType"
             value={formData.userType}
             onChange={handleInputChange}
             placeholder="Select your role"
-            bg="gray.700" // Input background color
-            color="white" // Text color
+            bg="white" // Input background color
+            color="black" // Text color
           >
-            <option value="investor">Investor</option>
-            <option value="business">Business</option>
+            <option value="Investor">Investor</option>
+            <option value="Business owner">Business</option>
           </Select>
         </FormControl>
 
