@@ -13,9 +13,9 @@ export const getProducts = async (req, res) => {
 };
 
 export const createProducts = async (req, res) => {
-    const { name, fund_needed, fund_raise, perks, description, image } = req.body;
+    const { name, fund_needed, fund_raise, perks, description, image,categories } = req.body;
 
-    if (!name || !fund_needed || !fund_raise || !perks || !description || !image) {
+    if (!name || !fund_needed || !fund_raise || !perks || !description || !image|| !categories) {
         return res.status(400).json({ success: false, message: "Please provide all fields" });
     }
 
@@ -25,7 +25,8 @@ export const createProducts = async (req, res) => {
         fund_raise,
         perks,
         description,
-        image
+        image,
+        categories
     });
 
     try {
@@ -40,7 +41,7 @@ export const createProducts = async (req, res) => {
 
 export const updateProducts = async (req, res) => {
     const { id } = req.params;
-    const { name, fund_needed, fund_raise, perks, description, image } = req.body;
+    const { name, fund_needed, fund_raise, perks, description, image,categories } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).json({ success: false, message: "Invalid Product Id" });
@@ -49,7 +50,7 @@ export const updateProducts = async (req, res) => {
     try {
         const updatedProduct = await Product.findByIdAndUpdate(
             id,
-            { name, fund_needed, fund_raise, perks, description, image },
+            { name, fund_needed, fund_raise, perks, description, image,categories },
             { new: true }
         );
         res.status(200).json({ success: true, message: "Product updated successfully", data: updatedProduct });

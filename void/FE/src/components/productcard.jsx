@@ -85,6 +85,9 @@ const ProductCard = ({ product }) => {
         <Text fontSize='l' color={textColor} mb={4}>
           Fund Raised: Nrs. {product.fund_raise}
         </Text>
+        <Text fontSize='l' color={textColor} mb={4}>
+        category:  {product.categories}
+        </Text>
         <Text color={textColor} mb={4}>
           Description: {product.description}
         </Text>
@@ -134,6 +137,12 @@ const ProductCard = ({ product }) => {
                 name='image'
                 value={updatedProduct.image}
                 onChange={(e) => setUpdatedProduct({ ...updatedProduct, image: e.target.value })}
+              />
+              <Input
+                placeholder='Category'
+                name='categories'
+                value={updatedProduct.categories}
+                onChange={(e) => setUpdatedProduct({ ...updatedProduct, categories: e.target.value })}
               />
               <Input
                 placeholder='Description'

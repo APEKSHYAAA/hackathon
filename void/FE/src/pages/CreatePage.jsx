@@ -3,6 +3,7 @@ import {
   Container,
   VStack,
   Box,
+  Select,
   Heading,
   Input,
   Button,
@@ -10,14 +11,18 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { useProductStore } from '../store/product';
+import { useNavigate } from 'react-router-dom';
+
 
 const CreatePage = () => {
+  const navigate = useNavigate();
   const [newProduct, setNewProduct] = useState({
     name: "",
     fund_needed: "",
     fund_raise: "",
     image: "",
     description: "",
+    categories: "",
     perks: [],
   });
 
@@ -107,6 +112,20 @@ const CreatePage = () => {
                 setNewProduct({ ...newProduct, description: e.target.value })
               }
             />
+        
+            <Select
+              placeholder="Select Category"
+              value={newProduct.categories}
+              onChange={(e) =>
+              setNewProduct({ ...newProduct, categories: e.target.value })
+              }
+            >
+              <option value="Food">Food</option>
+              <option value="Grocery">Grocery</option>
+              <option value="Clothes">Clothes</option>
+              <option value="Repair">Repair</option>
+              <option value="Electronics">Electronics</option>
+            </Select>
             <Input
               placeholder="Perks (comma separated)"
               name="perks"
@@ -120,6 +139,10 @@ const CreatePage = () => {
             />
             <Button colorScheme="blue" onClick={handleAddProduct} w="full">
               Add Product
+            </Button>
+
+            <Button colorScheme="teal" onClick={() => navigate('/')} w="full">
+              Go to Home
             </Button>
           </VStack>
         </Box>

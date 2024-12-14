@@ -24,6 +24,11 @@ const productSchema = mongoose.Schema({
     image: {
         type: String,
         required: true
+    },
+    categories: {
+        type: String,
+        enum: ['Food', 'Grocery', 'Clothes', 'Repair', 'Electronics'],
+        required: true
     }
 },
     {
