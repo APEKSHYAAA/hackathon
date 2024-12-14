@@ -44,7 +44,7 @@ const CreatePage = () => {
         description: message,
         status: "success",
         isClosable: true,
-      });
+      });navigate('/')
     }
     setNewProduct({
       name: "",
@@ -141,9 +141,6 @@ const CreatePage = () => {
               Add Product
             </Button>
 
-            <Button colorScheme="teal" onClick={() => navigate('/')} w="full">
-              Go to Home
-            </Button>
           </VStack>
         </Box>
       </VStack>

@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import { useColorModeValue } from '@chakra-ui/react';
 import LoginPage from './pages/LoginPage'; // Import LoginPage
 import RegisterPage from './pages/RegisterPage'; // Import RegisterPage
+import ProductDetailPage from './pages/productDetails';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null); // User state
