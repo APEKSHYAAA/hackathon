@@ -5,6 +5,7 @@ function LoginPage({ onSubmit, error }) {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
+    
   });
 
   const [isError, setIsError] = useState(false);
@@ -61,7 +62,7 @@ function LoginPage({ onSubmit, error }) {
             value={formData.password}
             onChange={handleInputChange}
             placeholder="Enter your password"
-            _placeholder={{ color: 'gray.400' }} // Lighter color for
+             // Lighter color for placeholder
             bg="white.700" // Input background color
             color="black" // Text color
           />
